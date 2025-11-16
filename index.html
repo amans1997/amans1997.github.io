@@ -805,6 +805,7 @@
                 <h3>📞 Phone</h3>
                 <p>Contact Person: Bantu Kumar Sharma</p>
                 <a href="tel:9584635906" class="contact-link">+91 9584635906</a>
+                <a href="tel:9584635906" class="contact-link">+91 9584635906</a>
             </div>
             <div class="contact-card">
                 <h3>🏠 Residential Address</h3>
@@ -818,6 +819,9 @@
         <div class="action-buttons">
             <button class="btn btn-primary" onclick="generatePDF()">📄 Print Biodata</button>
             <button class="btn btn-secondary" onclick="copyToClipboard()">🔗 Share Link</button>
+            <button class="btn btn-secondary" onclick="openWhatsApp()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="height:1.3em;vertical-align:middle;margin-right:7px;"> WhatsApp us
+</button>
         </div>
     </section>
 
@@ -1001,6 +1005,13 @@
             updateCounter();
             document.body.style.overflow = 'hidden';
         }
+
+        window.openWhatsApp = function () {
+            const phoneNumber = "919479274770";  // Your full number with country code, no '+' or spaces
+            const message = encodeURIComponent("Hello! I want to know more about your biodata.");
+            const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+            window.open(url, "_blank");
+        };
 
         function closeLightbox() {
             lightbox.classList.remove('active');
