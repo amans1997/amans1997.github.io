@@ -539,94 +539,6 @@
             display: none;
         }
 
-        .pdf-page {
-            background: white;
-            padding: 40px;
-            font-family: Arial, sans-serif;
-        }
-
-        .pdf-header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #8B0000;
-            padding-bottom: 20px;
-        }
-
-        .pdf-header h1 {
-            color: #8B0000;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-        .pdf-header .spiritual {
-            font-size: 16px;
-            color: #8B0000;
-            margin-bottom: 10px;
-        }
-
-        .pdf-row {
-            display: flex;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 8px;
-        }
-
-        .pdf-label {
-            font-weight: bold;
-            color: #8B0000;
-            width: 30%;
-            min-width: 180px;
-        }
-
-        .pdf-value {
-            color: #2C1810;
-            width: 70%;
-        }
-
-        .pdf-section-title {
-            background-color: #FFD700;
-            color: #8B0000;
-            padding: 10px;
-            margin-top: 20px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 14px;
-            border-radius: 3px;
-        }
-
-        .pdf-page-break {
-            page-break-after: always;
-            margin-top: 40px;
-        }
-
-        .photo-gallery-pdf {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .photo-gallery-pdf h2 {
-            color: #8B0000;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .photos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .photo-item {
-            text-align: center;
-        }
-
-        .photo-item img {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #8B0000;
-            border-radius: 5px;
-        }
-
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-maroon) 0%, rgba(139, 0, 0, 0.8) 100%);
@@ -725,15 +637,6 @@
 
             .btn {
                 width: 100%;
-            }
-
-            .pdf-label {
-                width: 35%;
-                min-width: 150px;
-            }
-
-            .pdf-value {
-                width: 65%;
             }
         }
 
@@ -926,144 +829,171 @@
             </div>
         </div>
         <div class="action-buttons">
-            <button class="btn btn-primary" onclick="downloadPDF()">📥 Download PDF</button>
+            <button class="btn btn-primary" onclick="downloadPDF()">📄 Print Biodata</button>
             <button class="btn btn-secondary" onclick="copyToClipboard()">🔗 Share Link</button>
         </div>
     </section>
 
     <!-- Hidden PDF Content -->
     <div id="pdfContent" class="pdf-content">
-        <div class="pdf-page">
-            <div class="pdf-header">
-                <div class="spiritual">ॐ श्री गणेशाय नमः</div>
-                <h1>Marriage Biodata</h1>
+        <div style="font-family: Arial, sans-serif; width: 100%; padding: 40px; line-height: 1.6; background: white; color: #000;">
+            <div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid #000; padding-bottom: 20px;">
+                <p style="font-size: 14px; margin: 5px 0;">ॐ श्री गणेशाय नमः</p>
+                <h1 style="font-size: 20px; margin: 0; font-weight: bold;">MARRIAGE BIODATA</h1>
             </div>
 
-            <div class="pdf-section-title">PERSONAL DETAILS</div>
-            <div class="pdf-row">
-                <div class="pdf-label">Name</div>
-                <div class="pdf-value">Aman Sharma</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Date of Birth</div>
-                <div class="pdf-value">10 October 1997</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Age</div>
-                <div class="pdf-value">28 Years</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Place of Birth</div>
-                <div class="pdf-value">Bhilai</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Rashi (Zodiac)</div>
-                <div class="pdf-value">Makara (Capricorn)</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Height</div>
-                <div class="pdf-value">6 feet</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Caste</div>
-                <div class="pdf-value">Bhumihar Brahmin</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Gotra</div>
-                <div class="pdf-value">Vatsa</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Education</div>
-                <div class="pdf-value">B.Tech, Vellore Institute of Technology, Chennai (2020)</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Occupation</div>
-                <div class="pdf-value">Software Engineer 3</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Company</div>
-                <div class="pdf-value">J.P. Morgan</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Location</div>
-                <div class="pdf-value">Bengaluru, Karnataka</div>
-            </div>
-
-            <div class="pdf-section-title">FAMILY DETAILS</div>
-            <div class="pdf-row">
-                <div class="pdf-label">Grandfather</div>
-                <div class="pdf-value">Late Shri. Ramadhar Sharma</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Grandmother</div>
-                <div class="pdf-value">Smt. Krishna Devi</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Father</div>
-                <div class="pdf-value">Shri Bantu Kumar Sharma</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Father's Occupation</div>
-                <div class="pdf-value">Operator, Bhilai Steel Plant</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Mother</div>
-                <div class="pdf-value">Smt Prabha Sharma</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Mother's Occupation</div>
-                <div class="pdf-value">Teacher, Sharda Vidyalaya, Bhilai</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Sibling</div>
-                <div class="pdf-value">Sumeet Sharma</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Sibling's Occupation</div>
-                <div class="pdf-value">Teller, IndusInd Bank</div>
+            <div style="margin-bottom: 30px;">
+                <p style="font-size: 12px; font-weight: bold; background: #f0f0f0; padding: 8px; margin: 0 0 15px 0;">PERSONAL DETAILS</p>
+                
+                <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Name</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Aman Sharma</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Date of Birth</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">10/10/1997</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Place of Birth</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Bhilai</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Rashi</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Makara (Capricorn)</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Height</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">6 feet</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Caste</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Bhumihar Brahmin</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Gotra</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Vatsa</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Education</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">B.Tech, VIT Chennai (2020)</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Occupation</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Software Engineer 3</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Company</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">J.P. Morgan, Bengaluru, Karnataka</td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="pdf-section-title">CONTACT DETAILS</div>
-            <div class="pdf-row">
-                <div class="pdf-label">Contact Person</div>
-                <div class="pdf-value">Bantu Kumar Sharma</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Phone</div>
-                <div class="pdf-value">+91 9584635906</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Residential Address</div>
-                <div class="pdf-value">125, Ward no 17, Supela, Bhilai, Chhattisgarh</div>
-            </div>
-            <div class="pdf-row">
-                <div class="pdf-label">Native Address</div>
-                <div class="pdf-value">Sonwan, P.O. Ghosi, Dist. Jehanabad, Bihar</div>
+            <div style="margin-bottom: 30px;">
+                <p style="font-size: 12px; font-weight: bold; background: #f0f0f0; padding: 8px; margin: 0 0 15px 0;">FAMILY DETAILS</p>
+                
+                <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Grandfather</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Late Shri. Ramadhar Sharma</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Grandmother</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Smt. Krishna Devi</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Father</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Shri Bantu Kumar Sharma</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Father's Occupation</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Operator, Bhilai Steel Plant</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Mother</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Smt Prabha Sharma</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Mother's Occupation</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Teacher, Sharda Vidyalaya, Bhilai</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Sibling</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Sumeet Sharma</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Sibling's Occupation</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Teller, IndusInd Bank</td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="pdf-page-break"></div>
+            <div style="margin-bottom: 30px;">
+                <p style="font-size: 12px; font-weight: bold; background: #f0f0f0; padding: 8px; margin: 0 0 15px 0;">CONTACT DETAILS</p>
+                
+                <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Contact Person</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Bantu Kumar Sharma</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Contact Number</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">9584635906</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Residential Address</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">125, Ward no 17, Supela, Bhilai, Chhattisgarh</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 35%; padding: 6px 0; border-bottom: 1px solid #ddd;">Native Address</td>
+                        <td style="padding: 6px 0; border-bottom: 1px solid #ddd;">:</td>
+                        <td style="padding: 6px 20px; border-bottom: 1px solid #ddd;">Sonwan, P.O. Ghosi, Dist. Jehanabad, Bihar</td>
+                    </tr>
+                </table>
+            </div>
 
-            <div class="photo-gallery-pdf">
-                <h2 style="border-bottom: 3px solid #8B0000; padding-bottom: 15px; margin-bottom: 30px;">📸 Photo Gallery</h2>
-                <div class="photos-grid">
-                    <div class="photo-item">
-                        <img src="1.jpg" alt="Photo 1" style="max-width: 100%; height: auto;">
+            <div style="page-break-before: always; margin-top: 40px; padding-top: 30px; border-top: 2px solid #000;">
+                <p style="text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 20px;">PHOTO GALLERY</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: center;">
+                    <div>
+                        <img src="1.jpg" style="width: 100%; max-width: 200px; border: 1px solid #000; margin-bottom: 10px;">
                     </div>
-                    <div class="photo-item">
-                        <img src="2.jpg" alt="Photo 2" style="max-width: 100%; height: auto;">
+                    <div>
+                        <img src="2.jpg" style="width: 100%; max-width: 200px; border: 1px solid #000; margin-bottom: 10px;">
                     </div>
-                    <div class="photo-item">
-                        <img src="3.jpg" alt="Photo 3" style="max-width: 100%; height: auto;">
+                    <div>
+                        <img src="3.jpg" style="width: 100%; max-width: 200px; border: 1px solid #000; margin-bottom: 10px;">
                     </div>
-                    <div class="photo-item">
-                        <img src="4.jpg" alt="Photo 4" style="max-width: 100%; height: auto;">
+                    <div>
+                        <img src="4.jpg" style="width: 100%; max-width: 200px; border: 1px solid #000; margin-bottom: 10px;">
                     </div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 40px; border-top: 3px solid #8B0000; padding-top: 20px;">
-                <p style="color: #8B0000; font-weight: bold; margin-bottom: 10px;">ॐ श्री गणेशाय नमः</p>
-                <p style="color: #2C1810; font-size: 12px;">© 2025 Aman Sharma. Marriage Biodata for Matrimonial Purposes.</p>
+            <div style="text-align: center; margin-top: 40px; border-top: 2px solid #000; padding-top: 20px;">
+                <p style="font-size: 12px; margin: 10px 0;">ॐ श्री गणेशाय नमः</p>
+                <p style="font-size: 10px; color: #666;">© 2025 Aman Sharma. Marriage Biodata for Matrimonial Purposes.</p>
             </div>
         </div>
     </div>
@@ -1209,10 +1139,10 @@
         function downloadPDF() {
             const element = document.getElementById('pdfContent');
             const options = {
-                margin: 10,
+                margin: 5,
                 filename: 'Aman_Sharma_Marriage_Biodata.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
+                html2canvas: { scale: 2, useCORS: true },
                 jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
             };
 
