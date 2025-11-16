@@ -37,6 +37,74 @@
             overflow-x: hidden;
         }
 
+        /* Blessing Popup */
+        .blessing-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.95) 0%, rgba(218, 165, 32, 0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: popupFadeIn 0.5s ease, popupFadeOut 0.5s ease 0.5s forwards;
+        }
+
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes popupFadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .blessing-content {
+            text-align: center;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .blessing-text {
+            font-family: 'Noto Sans Devanagari', serif;
+            font-size: 4rem;
+            color: var(--primary-gold);
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .blessing-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
         /* Header & Navigation */
         header {
             position: fixed;
@@ -633,10 +701,25 @@
             .btn {
                 width: 100%;
             }
+
+            .blessing-text {
+                font-size: 2.5rem;
+            }
+
+            .blessing-subtitle {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Blessing Popup -->
+    <div id="blessingPopup" class="blessing-popup">
+        <div class="blessing-content">
+            <div class="blessing-subtitle">जय श्री राधे</div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-content">
@@ -821,6 +904,14 @@
     <button class="back-to-top" id="backToTop">↑</button>
 
     <script>
+        // Blessing Popup - Show for 1 second on page load
+        window.addEventListener('load', () => {
+            const popup = document.getElementById('blessingPopup');
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 1000);
+        });
+
         // Photo Gallery & Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
@@ -947,7 +1038,7 @@
             });
         }
 
-        // Generate PDF Function - Simple Text Based
+        // Generate PDF Function
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF('p', 'mm', 'a4');
@@ -971,6 +1062,7 @@
             }
 
             // Header
+            addText('Om Shree Ganeshaya Namah', pageWidth / 2, 11, false);
             pdf.setTextColor(139, 0, 0);
             addText('MARRIAGE BIODATA', pageWidth / 2, 14, true);
             pdf.setTextColor(0, 0, 0);
@@ -1063,7 +1155,6 @@
             // Footer
             pdf.setTextColor(139, 0, 0);
             pdf.setFontSize(10);
-            
 
             // Save
             pdf.save('Aman_Sharma_Marriage_Biodata.pdf');
