@@ -138,4 +138,845 @@
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             color: var(--primary-maroon);
-            margin-bottom: 0
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            margin-top: 2rem;
+            color: var(--primary-maroon);
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Photo Gallery Section */
+        .gallery-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-maroon);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(139, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(139, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: var(--primary-maroon);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+            z-index: 2010;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary-maroon);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            color: white;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease forwards;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Personal Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.15);
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--primary-maroon);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        /* Family Section */
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .family-card {
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--cream) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+            border: 2px solid var(--primary-gold);
+            transition: all 0.3s ease;
+        }
+
+        .family-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.2);
+        }
+
+        .family-card h3 {
+            color: var(--primary-maroon);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .family-info {
+            margin-bottom: 0.8rem;
+        }
+
+        .family-info-label {
+            font-size: 0.8rem;
+            color: var(--primary-maroon);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .family-info-value {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-top: 0.3rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-maroon);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.15);
+        }
+
+        .contact-card h3 {
+            color: var(--primary-maroon);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            color: var(--dark-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-maroon);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--primary-maroon);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-gold);
+            color: var(--primary-maroon);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: var(--primary-gold);
+            color: var(--primary-maroon);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-maroon);
+            color: var(--primary-gold);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, rgba(139, 0, 0, 0.8) 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-spiritual {
+            font-family: 'Noto Sans Devanagari', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-maroon);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-gold);
+            color: var(--primary-maroon);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid,
+            .family-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.8rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            header,
+            .nav-dots,
+            .action-buttons,
+            .back-to-top,
+            .scroll-indicator {
+                display: none;
+            }
+
+            section {
+                page-break-inside: avoid;
+                box-shadow: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">Aman Sharma</a>
+            <div class="nav-dots">
+                <div class="nav-dot active" data-section="0"></div>
+                <div class="nav-dot" data-section="1"></div>
+                <div class="nav-dot" data-section="2"></div>
+                <div class="nav-dot" data-section="3"></div>
+                <div class="nav-dot" data-section="4"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="spiritual-text">ॐ श्री गणेशाय नमः</div>
+        <h1>Marriage Biodata</h1>
+        <p class="subtitle">Aman Sharma | Software Engineer | J.P. Morgan</p>
+        <p class="scroll-indicator">↓ Scroll to explore ↓</p>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-photo="0">
+                <img src="1.jpg" alt="Aman Sharma - Photo 1">
+            </div>
+            <div class="gallery-item" data-photo="1">
+                <img src="2.jpg" alt="Aman Sharma - Photo 2">
+            </div>
+            <div class="gallery-item" data-photo="2">
+                <img src="3.jpg" alt="Aman Sharma - Photo 3">
+            </div>
+            <div class="gallery-item" data-photo="3">
+                <img src="4.jpg" alt="Aman Sharma - Photo 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-nav lightbox-prev" id="prevBtn">❮</button>
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+            <button class="lightbox-nav lightbox-next" id="nextBtn">❯</button>
+            <button class="lightbox-close" id="closeBtn">&times;</button>
+            <div class="lightbox-counter" id="counter"></div>
+        </div>
+    </div>
+
+    <!-- Personal Details Section -->
+    <section id="personal" class="personal-section">
+        <h2 class="section-title">Personal Details</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-label">Name</div>
+                <div class="detail-value">Aman Sharma</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Date of Birth</div>
+                <div class="detail-value">10 October 1997</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Age</div>
+                <div class="detail-value">28 Years</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Place of Birth</div>
+                <div class="detail-value">Bhilai</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Rashi</div>
+                <div class="detail-value">Makara (Capricorn)</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Height</div>
+                <div class="detail-value">6 feet</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Caste</div>
+                <div class="detail-value">Bhumihar Brahmin</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Gotra</div>
+                <div class="detail-value">Vatsa</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Education</div>
+                <div class="detail-value">B.Tech, VIT Chennai (2020)</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Occupation</div>
+                <div class="detail-value">Software Engineer</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Company</div>
+                <div class="detail-value">J.P. Morgan</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Location</div>
+                <div class="detail-value">Bengaluru, Karnataka</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Details Section -->
+    <section id="family" class="family-section">
+        <h2 class="section-title">Family Details</h2>
+        <div class="family-grid">
+            <div class="family-card">
+                <h3>👵 Grandparents</h3>
+                <div class="family-info">
+                    <div class="family-info-label">Grandfather</div>
+                    <div class="family-info-value">Ramadhar Sharma</div>
+                </div>
+                <div class="family-info">
+                    <div class="family-info-label">Grandmother</div>
+                    <div class="family-info-value">Krishna Devi</div>
+                </div>
+            </div>
+            <div class="family-card">
+                <h3>👨‍👩‍👦 Parents</h3>
+                <div class="family-info">
+                    <div class="family-info-label">Father</div>
+                    <div class="family-info-value">Bantu Kumar Sharma</div>
+                    <div class="family-info-label" style="margin-top: 0.5rem;">Occupation</div>
+                    <div class="family-info-value">Operator, Bhilai Steel Plant</div>
+                </div>
+                <div class="family-info">
+                    <div class="family-info-label">Mother</div>
+                    <div class="family-info-value">Prabha Sharma</div>
+                    <div class="family-info-label" style="margin-top: 0.5rem;">Occupation</div>
+                    <div class="family-info-value">Teacher, Sharda Vidyalaya, Bhilai</div>
+                </div>
+            </div>
+            <div class="family-card">
+                <h3>👦 Siblings</h3>
+                <div class="family-info">
+                    <div class="family-info-label">Brother</div>
+                    <div class="family-info-value">Sumeet Sharma</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Details Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Contact Details</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📞 Phone</h3>
+                <p>Contact Person: Bantu Kumar Sharma</p>
+                <a href="tel:9584635906" class="contact-link">+91 9584635906</a>
+            </div>
+            <div class="contact-card">
+                <h3>🏠 Residential Address</h3>
+                <p>125, Ward no 17, Supela,<br>Bhilai, Chhattisgarh</p>
+            </div>
+            <div class="contact-card">
+                <h3>📍 Native Address</h3>
+                <p>Sonwan, P.O. Ghosi,<br>Dist. Jehanabad, Bihar</p>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="window.print()">📄 Print Biodata</button>
+            <button class="btn btn-secondary" onclick="copyToClipboard()">🔗 Share</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-spiritual">ॐ श्री गणेशाय नमः</div>
+        <div class="footer-text">© 2025 Aman Sharma. Marriage Biodata</div>
+        <div class="footer-text">Made with ❤️ for matrimonial purposes</div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script>
+        // Photo Gallery & Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const closeBtn = document.getElementById('closeBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        const photoFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+        let currentPhotoIndex = 0;
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentPhotoIndex = index;
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            lightbox.classList.add('active');
+            lightboxImage.src = photoFiles[currentPhotoIndex];
+            updateCounter();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateCounter() {
+            counter.textContent = `${currentPhotoIndex + 1} / ${photoFiles.length}`;
+        }
+
+        function nextPhoto() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photoFiles.length;
+            lightboxImage.src = photoFiles[currentPhotoIndex];
+            updateCounter();
+        }
+
+        function prevPhoto() {
+            currentPhotoIndex = (currentPhotoIndex - 1 + photoFiles.length) % photoFiles.length;
+            lightboxImage.src = photoFiles[currentPhotoIndex];
+            updateCounter();
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', prevPhoto);
+        nextBtn.addEventListener('click', nextPhoto);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextPhoto();
+            if (e.key === 'ArrowLeft') prevPhoto();
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextPhoto();
+            if (touchEndX > touchStartX + 50) prevPhoto();
+        }
+
+        // Navigation Dots
+        const navDots = document.querySelectorAll('.nav-dot');
+        const sections = document.querySelectorAll('section');
+
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                sections[index].scrollIntoView({ behavior: 'smooth' });
+                navDots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+
+        // Update active nav dot on scroll
+        window.addEventListener('scroll', () => {
+            let currentSection = 0;
+            sections.forEach((section, index) => {
+                if (window.scrollY >= section.offsetTop - 150) {
+                    currentSection = index;
+                }
+            });
+            navDots.forEach(dot => dot.classList.remove('active'));
+            navDots[currentSection].classList.add('active');
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Copy to Clipboard Function
+        function copyToClipboard() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Biodata link copied to clipboard!');
+            }).catch(() => {
+                alert('Failed to copy link');
+            });
+        }
+
+        // Scroll animations for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInSection 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
