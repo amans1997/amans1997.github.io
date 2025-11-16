@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Marriage biodata of Aman Sharma, Software Engineer at J.P. Morgan, Bengaluru">
+    <meta name="description" content="Marriage biodata of Aman Sharma, Software Engineer 3 at J.P. Morgan, Bengaluru">
     <meta property="og:title" content="Marriage Biodata - Aman Sharma">
     <meta property="og:description" content="Professional marriage biodata with photos">
     <title>Marriage Biodata - Aman Sharma</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -300,6 +301,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            border: none;
         }
 
         .lightbox-close:hover {
@@ -532,6 +534,99 @@
             transform: scale(1.05);
         }
 
+        /* PDF Download Styles */
+        .pdf-content {
+            display: none;
+        }
+
+        .pdf-page {
+            background: white;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+        }
+
+        .pdf-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #8B0000;
+            padding-bottom: 20px;
+        }
+
+        .pdf-header h1 {
+            color: #8B0000;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .pdf-header .spiritual {
+            font-size: 16px;
+            color: #8B0000;
+            margin-bottom: 10px;
+        }
+
+        .pdf-row {
+            display: flex;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        .pdf-label {
+            font-weight: bold;
+            color: #8B0000;
+            width: 30%;
+            min-width: 180px;
+        }
+
+        .pdf-value {
+            color: #2C1810;
+            width: 70%;
+        }
+
+        .pdf-section-title {
+            background-color: #FFD700;
+            color: #8B0000;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+
+        .pdf-page-break {
+            page-break-after: always;
+            margin-top: 40px;
+        }
+
+        .photo-gallery-pdf {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .photo-gallery-pdf h2 {
+            color: #8B0000;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .photo-item {
+            text-align: center;
+        }
+
+        .photo-item img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #8B0000;
+            border-radius: 5px;
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-maroon) 0%, rgba(139, 0, 0, 0.8) 100%);
@@ -630,6 +725,15 @@
 
             .btn {
                 width: 100%;
+            }
+
+            .pdf-label {
+                width: 35%;
+                min-width: 150px;
+            }
+
+            .pdf-value {
+                width: 65%;
             }
         }
 
@@ -822,12 +926,154 @@
             </div>
         </div>
         <div class="action-buttons">
-            <button class="btn btn-primary" onclick="window.print()">📄 Print Biodata</button>
-            <button class="btn btn-secondary" onclick="copyToClipboard()">🔗 Share</button>
+            <button class="btn btn-primary" onclick="downloadPDF()">📥 Download PDF</button>
+            <button class="btn btn-secondary" onclick="copyToClipboard()">🔗 Share Link</button>
         </div>
     </section>
 
+    <!-- Hidden PDF Content -->
+    <div id="pdfContent" class="pdf-content">
+        <div class="pdf-page">
+            <div class="pdf-header">
+                <div class="spiritual">ॐ श्री गणेशाय नमः</div>
+                <h1>Marriage Biodata</h1>
+            </div>
+
+            <div class="pdf-section-title">PERSONAL DETAILS</div>
+            <div class="pdf-row">
+                <div class="pdf-label">Name</div>
+                <div class="pdf-value">Aman Sharma</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Date of Birth</div>
+                <div class="pdf-value">10 October 1997</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Age</div>
+                <div class="pdf-value">28 Years</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Place of Birth</div>
+                <div class="pdf-value">Bhilai</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Rashi (Zodiac)</div>
+                <div class="pdf-value">Makara (Capricorn)</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Height</div>
+                <div class="pdf-value">6 feet</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Caste</div>
+                <div class="pdf-value">Bhumihar Brahmin</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Gotra</div>
+                <div class="pdf-value">Vatsa</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Education</div>
+                <div class="pdf-value">B.Tech, Vellore Institute of Technology, Chennai (2020)</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Occupation</div>
+                <div class="pdf-value">Software Engineer 3</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Company</div>
+                <div class="pdf-value">J.P. Morgan</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Location</div>
+                <div class="pdf-value">Bengaluru, Karnataka</div>
+            </div>
+
+            <div class="pdf-section-title">FAMILY DETAILS</div>
+            <div class="pdf-row">
+                <div class="pdf-label">Grandfather</div>
+                <div class="pdf-value">Late Shri. Ramadhar Sharma</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Grandmother</div>
+                <div class="pdf-value">Smt. Krishna Devi</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Father</div>
+                <div class="pdf-value">Shri Bantu Kumar Sharma</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Father's Occupation</div>
+                <div class="pdf-value">Operator, Bhilai Steel Plant</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Mother</div>
+                <div class="pdf-value">Smt Prabha Sharma</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Mother's Occupation</div>
+                <div class="pdf-value">Teacher, Sharda Vidyalaya, Bhilai</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Sibling</div>
+                <div class="pdf-value">Sumeet Sharma</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Sibling's Occupation</div>
+                <div class="pdf-value">Teller, IndusInd Bank</div>
+            </div>
+
+            <div class="pdf-section-title">CONTACT DETAILS</div>
+            <div class="pdf-row">
+                <div class="pdf-label">Contact Person</div>
+                <div class="pdf-value">Bantu Kumar Sharma</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Phone</div>
+                <div class="pdf-value">+91 9584635906</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Residential Address</div>
+                <div class="pdf-value">125, Ward no 17, Supela, Bhilai, Chhattisgarh</div>
+            </div>
+            <div class="pdf-row">
+                <div class="pdf-label">Native Address</div>
+                <div class="pdf-value">Sonwan, P.O. Ghosi, Dist. Jehanabad, Bihar</div>
+            </div>
+
+            <div class="pdf-page-break"></div>
+
+            <div class="photo-gallery-pdf">
+                <h2 style="border-bottom: 3px solid #8B0000; padding-bottom: 15px; margin-bottom: 30px;">📸 Photo Gallery</h2>
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="1.jpg" alt="Photo 1" style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="photo-item">
+                        <img src="2.jpg" alt="Photo 2" style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="photo-item">
+                        <img src="3.jpg" alt="Photo 3" style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="photo-item">
+                        <img src="4.jpg" alt="Photo 4" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; border-top: 3px solid #8B0000; padding-top: 20px;">
+                <p style="color: #8B0000; font-weight: bold; margin-bottom: 10px;">ॐ श्री गणेशाय नमः</p>
+                <p style="color: #2C1810; font-size: 12px;">© 2025 Aman Sharma. Marriage Biodata for Matrimonial Purposes.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
+    <footer>
+        <div class="footer-spiritual">ॐ श्री गणेशाय नमः</div>
+        <div class="footer-text">© 2025 Aman Sharma. Marriage Biodata</div>
+        <div class="footer-text">Made with ❤️ for matrimonial purposes</div>
+    </footer>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop">↑</button>
@@ -957,6 +1203,20 @@
             }).catch(() => {
                 alert('Failed to copy link');
             });
+        }
+
+        // Download PDF Function
+        function downloadPDF() {
+            const element = document.getElementById('pdfContent');
+            const options = {
+                margin: 10,
+                filename: 'Aman_Sharma_Marriage_Biodata.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+            };
+
+            html2pdf().set(options).from(element).save();
         }
 
         // Scroll animations for sections
