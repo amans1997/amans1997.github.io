@@ -970,11 +970,7 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-spiritual">ॐ श्री गणेशाय नमः</div>
-        <div class="footer-text">© 2025 Aman Sharma. Marriage Biodata</div>
-        <div class="footer-text">Made with ❤️ for matrimonial purposes</div>
-    </footer>
+    
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop">↑</button>
@@ -1118,11 +1114,10 @@
             // Header
             pdf.setFont('Arial', 'normal');
             pdf.setFontSize(10);
-            pdf.text('ॐ श्री गणेशाय नमः', pageWidth / 2, yPosition, { align: 'center' });
             yPosition += 5;
             pdf.setFont('Arial', 'bold');
             pdf.setFontSize(14);
-            pdf.text('MARRIAGE BIODATA', pageWidth / 2, yPosition, { align: 'center' });
+            pdf.text('Marriage Biodata', pageWidth / 2, yPosition, { align: 'center' });
             yPosition += 8;
             pdf.setDrawColor(0, 0, 0);
             pdf.line(margin, yPosition, pageWidth - margin, yPosition);
@@ -1133,7 +1128,7 @@
             pdf.setFontSize(9);
             pdf.setFillColor(240, 240, 240);
             pdf.rect(margin, yPosition, pageWidth - 2 * margin, 4, 'F');
-            pdf.text('PERSONAL DETAILS', margin + 2, yPosition + 3);
+            pdf.text('Personal Details', margin + 2, yPosition + 3);
             yPosition += 6;
 
             pdf.setFont('Arial', 'normal');
@@ -1254,7 +1249,7 @@
             // Footer
             pdf.setFont('Arial', 'normal');
             pdf.setFontSize(9);
-            pdf.text('ॐ श्री गणेशाय नमः', pageWidth / 2, pageHeight - 10, { align: 'center' });
+            
 
             // Save PDF
             pdf.save('Aman_Sharma_Marriage_Biodata.pdf');
