@@ -20,7 +20,9 @@
             --primary-maroon: #8B0000;
             --primary-gold: #FFD700;
             --secondary-gold: #DAA520;
+            --dark-gold: #B8860B;
             --cream: #FFFDD0;
+            --ivory: #FFFFF0;
             --dark-text: #2C1810;
             --light-text: #1a0d06;
             --card-bg: rgba(255, 255, 255, 0.95);
@@ -35,6 +37,7 @@
             overflow-x: hidden;
         }
 
+        /* Header & Navigation */
         header {
             position: fixed;
             top: 0;
@@ -54,16 +57,19 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
             color: var(--primary-gold);
             font-size: 1.5rem;
             font-weight: 700;
             text-decoration: none;
         }
+
         .nav-dots {
             display: flex;
             gap: 1.5rem;
         }
+
         .nav-dot {
             width: 12px;
             height: 12px;
@@ -73,6 +79,7 @@
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
+
         .nav-dot:hover,
         .nav-dot.active {
             background: var(--primary-gold);
@@ -80,13 +87,45 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* Hero Section */
         .hero {
             margin-top: 80px;
             padding: 4rem 2rem;
             text-align: center;
             background: linear-gradient(135deg, rgba(139, 0, 0, 0.05) 0%, rgba(218, 165, 32, 0.05) 100%);
             position: relative;
+            overflow: hidden;
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
         .spiritual-text {
             font-family: 'Noto Sans Devanagari', serif;
             color: var(--primary-maroon);
@@ -95,33 +134,63 @@
             font-weight: 700;
             letter-spacing: 2px;
         }
+
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             color: var(--primary-maroon);
             margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
         }
+
         .hero .subtitle {
             font-size: 1.2rem;
             color: var(--dark-text);
             margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
         }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .scroll-indicator {
             margin-top: 2rem;
             color: var(--primary-maroon);
             font-size: 0.9rem;
             animation: bounce 2s infinite;
         }
+
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
         }
 
+        /* Photo Gallery Section */
         .gallery-section {
             padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -131,6 +200,7 @@
             position: relative;
             padding-bottom: 1rem;
         }
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -141,12 +211,14 @@
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
         }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
+
         .gallery-item {
             position: relative;
             overflow: hidden;
@@ -155,10 +227,12 @@
             box-shadow: 0 8px 30px rgba(139, 0, 0, 0.15);
             transition: all 0.3s ease;
         }
+
         .gallery-item:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 40px rgba(139, 0, 0, 0.25);
         }
+
         .gallery-item img {
             width: 100%;
             height: 300px;
@@ -166,23 +240,36 @@
             display: block;
             transition: transform 0.3s ease;
         }
+
         .gallery-item:hover img {
             transform: scale(1.1);
         }
 
+        /* Lightbox Modal */
         .lightbox {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
+            animation: fadeIn 0.3s ease;
         }
+
         .lightbox.active {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .lightbox-content {
             position: relative;
             max-width: 90%;
@@ -191,56 +278,220 @@
             align-items: center;
             justify-content: center;
         }
+
         .lightbox-image {
             max-width: 100%;
             max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
         }
-        .lightbox-close,
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .lightbox-close:hover {
+            background: var(--primary-maroon);
+        }
+
         .lightbox-nav {
             position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 2.5rem;
             color: white;
+            cursor: pointer;
             background: rgba(0, 0, 0, 0.5);
-            width: 50px; height: 50px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
-            border: none; cursor: pointer;
+            border: none;
+            z-index: 2010;
         }
-        .lightbox-close { top: 20px; right: 30px; }
-        .lightbox-close:hover,
-        .lightbox-nav:hover { background: var(--primary-maroon); }
-        .lightbox-nav { top: 50%; transform: translateY(-50%); }
-        .lightbox-prev { left: 20px; }
-        .lightbox-next { right: 20px; }
+
+        .lightbox-nav:hover {
+            background: var(--primary-maroon);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
         .lightbox-counter {
             position: absolute;
             bottom: 20px;
             color: white;
             font-size: 1rem;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.7);
             padding: 0.5rem 1rem;
             border-radius: 20px;
         }
 
-        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-        .details-grid, .family-grid, .contact-grid {
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease forwards;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Personal Details */
+        .details-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem; margin-top: 2rem;
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        .detail-card, .family-card, .contact-card {
+
+        .detail-card {
             background: var(--card-bg);
-            padding: 1.5rem 2rem;
+            padding: 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(139,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.15);
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--primary-maroon);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        /* Family Section */
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .family-card {
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--cream) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+            border: 2px solid var(--primary-gold);
+            transition: all 0.3s ease;
+        }
+
+        .family-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.2);
+        }
+
+        .family-card h3 {
+            color: var(--primary-maroon);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .family-info {
+            margin-bottom: 0.8rem;
+        }
+
+        .family-info-label {
+            font-size: 0.8rem;
+            color: var(--primary-maroon);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .family-info-value {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-top: 0.3rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-maroon);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.15);
+        }
+
+        .contact-card h3 {
+            color: var(--primary-maroon);
+            font-size: 1.1rem;
             margin-bottom: 1rem;
         }
-        .detail-label { font-size: 0.85rem; color: var(--primary-maroon); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1px; }
-        .detail-value { font-size: 1.1rem; color: var(--light-text); font-weight: 500; }
 
+        .contact-link {
+            color: var(--dark-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-maroon);
+        }
+
+        /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 1rem;
@@ -248,21 +499,42 @@
             margin-top: 3rem;
             flex-wrap: wrap;
         }
+
         .btn {
             padding: 0.8rem 2rem;
             border: none;
             border-radius: 25px;
             font-size: 1rem;
             cursor: pointer;
+            transition: all 0.3s ease;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .btn-primary { background: var(--primary-maroon); color: white; }
-        .btn-primary:hover { background: var(--primary-gold); color: var(--primary-maroon); }
-        .btn-secondary { background: var(--primary-gold); color: var(--primary-maroon); }
-        .btn-secondary:hover { background: var(--primary-maroon); color: var(--primary-gold); }
 
+        .btn-primary {
+            background: var(--primary-maroon);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-gold);
+            color: var(--primary-maroon);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: var(--primary-gold);
+            color: var(--primary-maroon);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-maroon);
+            color: var(--primary-gold);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-maroon) 0%, rgba(139, 0, 0, 0.8) 100%);
             color: white;
@@ -270,26 +542,97 @@
             padding: 2rem;
             margin-top: 4rem;
         }
+
         .footer-spiritual {
             font-family: 'Noto Sans Devanagari', serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             letter-spacing: 1px;
         }
-        .back-to-top {
-            position: fixed; bottom: 30px; right: 30px; background: var(--primary-maroon); color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; border: none;
+
+        .footer-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
-        .back-to-top.active { opacity: 1; visibility: visible; }
-        .back-to-top:hover { background: var(--primary-gold); color: var(--primary-maroon); }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-maroon);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-gold);
+            color: var(--primary-maroon);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .details-grid, .family-grid, .contact-grid { grid-template-columns: 1fr; }
-            .lightbox-nav, .lightbox-close { width: 40px; height: 40px; font-size: 1.8rem; }
-            .action-buttons { flex-direction: column; }
-            .btn { width: 100%; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid,
+            .family-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.8rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -307,6 +650,7 @@
             </div>
         </div>
     </header>
+
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="spiritual-text">ॐ श्री गणेशाय नमः</div>
@@ -314,6 +658,7 @@
         <p class="subtitle">Aman Sharma | Software Engineer 3 | J.P. Morgan</p>
         <p class="scroll-indicator">↓ Scroll to explore ↓</p>
     </section>
+
     <!-- Photo Gallery Section -->
     <section id="gallery" class="gallery-section">
         <h2 class="section-title">Photo Gallery</h2>
@@ -332,6 +677,7 @@
             </div>
         </div>
     </section>
+
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
@@ -342,24 +688,62 @@
             <div class="lightbox-counter" id="counter"></div>
         </div>
     </div>
+
     <!-- Personal Details Section -->
     <section id="personal" class="personal-section">
         <h2 class="section-title">Personal Details</h2>
         <div class="details-grid">
-            <div class="detail-card"><div class="detail-label">Name</div><div class="detail-value">Aman Sharma</div></div>
-            <div class="detail-card"><div class="detail-label">Date of Birth</div><div class="detail-value">10 October 1997</div></div>
-            <div class="detail-card"><div class="detail-label">Age</div><div class="detail-value">28 Years</div></div>
-            <div class="detail-card"><div class="detail-label">Place of Birth</div><div class="detail-value">Bhilai</div></div>
-            <div class="detail-card"><div class="detail-label">Rashi</div><div class="detail-value">Makara (Capricorn)</div></div>
-            <div class="detail-card"><div class="detail-label">Height</div><div class="detail-value">6 feet</div></div>
-            <div class="detail-card"><div class="detail-label">Caste</div><div class="detail-value">Bhumihar Brahmin</div></div>
-            <div class="detail-card"><div class="detail-label">Gotra</div><div class="detail-value">Vatsa</div></div>
-            <div class="detail-card"><div class="detail-label">Education</div><div class="detail-value">B.Tech, VIT Chennai (2020)</div></div>
-            <div class="detail-card"><div class="detail-label">Occupation</div><div class="detail-value">Software Engineer 3</div></div>
-            <div class="detail-card"><div class="detail-label">Company</div><div class="detail-value">J.P. Morgan</div></div>
-            <div class="detail-card"><div class="detail-label">Location</div><div class="detail-value">Bengaluru, Karnataka</div></div>
+            <div class="detail-card">
+                <div class="detail-label">Name</div>
+                <div class="detail-value">Aman Sharma</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Date of Birth</div>
+                <div class="detail-value">10 October 1997</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Age</div>
+                <div class="detail-value">28 Years</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Place of Birth</div>
+                <div class="detail-value">Bhilai</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Rashi</div>
+                <div class="detail-value">Makara (Capricorn)</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Height</div>
+                <div class="detail-value">6 feet</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Caste</div>
+                <div class="detail-value">Bhumihar Brahmin</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Gotra</div>
+                <div class="detail-value">Vatsa</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Education</div>
+                <div class="detail-value">B.Tech, VIT Chennai (2020)</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Occupation</div>
+                <div class="detail-value">Software Engineer 3</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Company</div>
+                <div class="detail-value">J.P. Morgan</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Location</div>
+                <div class="detail-value">Bengaluru, Karnataka</div>
+            </div>
         </div>
     </section>
+
     <!-- Family Details Section -->
     <section id="family" class="family-section">
         <h2 class="section-title">Family Details</h2>
@@ -401,29 +785,43 @@
             </div>
         </div>
     </section>
+
     <!-- Contact Details Section -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">Contact Details</h2>
         <div class="contact-grid">
-            <div class="contact-card"><h3>📞 Phone</h3><p>Contact Person: Bantu Kumar Sharma</p><a href="tel:9584635906" class="contact-link">+91 9584635906</a></div>
-            <div class="contact-card"><h3>🏠 Residential Address</h3><p>125, Ward no 17, Supela,<br>Bhilai, Chhattisgarh</p></div>
-            <div class="contact-card"><h3>📍 Native Address</h3><p>Sonwan, P.O. Ghosi,<br>Dist. Jehanabad, Bihar</p></div>
+            <div class="contact-card">
+                <h3>📞 Phone</h3>
+                <p>Contact Person: Bantu Kumar Sharma</p>
+                <a href="tel:9584635906" class="contact-link">+91 9584635906</a>
+            </div>
+            <div class="contact-card">
+                <h3>🏠 Residential Address</h3>
+                <p>125, Ward no 17, Supela,<br>Bhilai, Chhattisgarh</p>
+            </div>
+            <div class="contact-card">
+                <h3>📍 Native Address</h3>
+                <p>Sonwan, P.O. Ghosi,<br>Dist. Jehanabad, Bihar</p>
+            </div>
         </div>
         <div class="action-buttons">
             <button class="btn btn-primary" onclick="generatePDF()">📄 Print Biodata</button>
             <button class="btn btn-secondary" onclick="copyToClipboard()">🔗 Share Link</button>
         </div>
     </section>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-spiritual">ॐ श्री गणेशाय नमः</div>
         <div class="footer-text">© 2025 Aman Sharma. Marriage Biodata</div>
         <div class="footer-text">Made with ❤️ for matrimonial purposes</div>
     </footer>
+
+    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop">↑</button>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Gallery Lightbox
+        // Photo Gallery & Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
         const closeBtn = document.getElementById('closeBtn');
@@ -431,6 +829,7 @@
         const nextBtn = document.getElementById('nextBtn');
         const counter = document.getElementById('counter');
         const galleryItems = document.querySelectorAll('.gallery-item');
+        
         const photoFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
         let currentPhotoIndex = 0;
 
@@ -440,42 +839,53 @@
                 openLightbox();
             });
         });
+
         function openLightbox() {
             lightbox.classList.add('active');
             lightboxImage.src = photoFiles[currentPhotoIndex];
             updateCounter();
             document.body.style.overflow = 'hidden';
         }
+
         function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
+
         function updateCounter() {
             counter.textContent = `${currentPhotoIndex + 1} / ${photoFiles.length}`;
         }
+
         function nextPhoto() {
             currentPhotoIndex = (currentPhotoIndex + 1) % photoFiles.length;
             lightboxImage.src = photoFiles[currentPhotoIndex];
             updateCounter();
         }
+
         function prevPhoto() {
             currentPhotoIndex = (currentPhotoIndex - 1 + photoFiles.length) % photoFiles.length;
             lightboxImage.src = photoFiles[currentPhotoIndex];
             updateCounter();
         }
+
         closeBtn.addEventListener('click', closeLightbox);
         prevBtn.addEventListener('click', prevPhoto);
         nextBtn.addEventListener('click', nextPhoto);
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
+
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             if (e.key === 'ArrowRight') nextPhoto();
             if (e.key === 'ArrowLeft') prevPhoto();
             if (e.key === 'Escape') closeLightbox();
         });
-        let touchStartX = 0, touchEndX = 0;
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
         lightbox.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, false);
@@ -483,14 +893,16 @@
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
         }, false);
+
         function handleSwipe() {
             if (touchEndX < touchStartX - 50) nextPhoto();
             if (touchEndX > touchStartX + 50) prevPhoto();
         }
 
-        // Navigation Dots and Scroll
+        // Navigation Dots
         const navDots = document.querySelectorAll('.nav-dot');
         const sections = document.querySelectorAll('section');
+
         navDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 sections[index].scrollIntoView({ behavior: 'smooth' });
@@ -498,10 +910,14 @@
                 dot.classList.add('active');
             });
         });
+
+        // Update active nav dot on scroll
         window.addEventListener('scroll', () => {
             let currentSection = 0;
             sections.forEach((section, index) => {
-                if (window.scrollY >= section.offsetTop - 150) { currentSection = index; }
+                if (window.scrollY >= section.offsetTop - 150) {
+                    currentSection = index;
+                }
             });
             navDots.forEach(dot => dot.classList.remove('active'));
             navDots[currentSection].classList.add('active');
@@ -510,49 +926,65 @@
         // Back to Top Button
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) { backToTop.classList.add('active'); }
-            else { backToTop.classList.remove('active'); }
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
         });
+
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Copy to Clipboard
-        window.copyToClipboard = function () {
+        // Copy to Clipboard Function
+        function copyToClipboard() {
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
                 alert('Biodata link copied to clipboard!');
             }).catch(() => {
                 alert('Failed to copy link');
             });
-        };
+        }
 
-        // Print Biodata PDF
-        window.generatePDF = function () {
+        // Generate PDF Function - Simple Text Based
+        function generatePDF() {
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF('p', 'mm', 'a4');
+            
             let yPos = 15;
             const pageHeight = pdf.internal.pageSize.getHeight();
             const pageWidth = pdf.internal.pageSize.getWidth();
             const margin = 15;
+            const lineHeight = 4;
+
+            // Helper function to add text
             function addText(text, x = margin, size = 10, isBold = false) {
-                if (yPos > pageHeight - 10) { pdf.addPage(); yPos = 15; }
-                pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
+                if (yPos > pageHeight - 10) {
+                    pdf.addPage();
+                    yPos = 15;
+                }
+                pdf.setFont('Arial', isBold ? 'bold' : 'normal');
                 pdf.setFontSize(size);
-                pdf.text(text, x, yPos, {align:"left", baseline:"top"});
+                pdf.text(text, x, yPos);
                 yPos += size / 2.5;
             }
-            addText('Om Shree Ganeshaya Namah', pageWidth / 2, 11, false);
+
+            // Header
             pdf.setTextColor(139, 0, 0);
             addText('MARRIAGE BIODATA', pageWidth / 2, 14, true);
             pdf.setTextColor(0, 0, 0);
             yPos += 2;
             pdf.line(margin, yPos, pageWidth - margin, yPos);
             yPos += 3;
+
+            // Personal Details
             pdf.setTextColor(139, 0, 0);
             addText('PERSONAL DETAILS', margin, 10, true);
-            pdf.setTextColor(0, 0, 0); yPos += 1;
-            [
+            pdf.setTextColor(0, 0, 0);
+            yPos += 1;
+
+            const personalDetails = [
                 'Name                    :    Aman Sharma',
                 'Date Of Birth           :    10/10/1997',
                 'Place Of Birth          :    Bhilai',
@@ -563,12 +995,21 @@
                 'Education               :    B.Tech VIT Chennai (2020)',
                 'Occupation              :    Software Engineer 3',
                 'Company & Location      :    J.P. Morgan, Bengaluru'
-            ].forEach(detail => addText(detail, margin, 9));
+            ];
+
+            personalDetails.forEach(detail => {
+                addText(detail, margin, 9);
+            });
+
             yPos += 3;
+
+            // Family Details
             pdf.setTextColor(139, 0, 0);
             addText('FAMILY DETAILS', margin, 10, true);
-            pdf.setTextColor(0, 0, 0); yPos += 1;
-            [
+            pdf.setTextColor(0, 0, 0);
+            yPos += 1;
+
+            const familyDetails = [
                 'Grandfather             :    Late Shri. Ramadhar Sharma',
                 'Grandmother             :    Smt. Krishna Devi',
                 'Father                  :    Shri Bantu Kumar Sharma',
@@ -577,32 +1018,72 @@
                 'Mother\'s Occupation    :    Teacher, Sharda Vidyalaya, Bhilai',
                 'Sibling                 :    Sumeet Sharma',
                 'Sibling\'s Occupation   :    Teller, IndusInd Bank'
-            ].forEach(detail => addText(detail, margin, 9));
+            ];
+
+            familyDetails.forEach(detail => {
+                addText(detail, margin, 9);
+            });
+
             yPos += 3;
+
+            // Contact Details
             pdf.setTextColor(139, 0, 0);
             addText('CONTACT DETAILS', margin, 10, true);
-            pdf.setTextColor(0, 0, 0); yPos += 1;
-            [
+            pdf.setTextColor(0, 0, 0);
+            yPos += 1;
+
+            const contactDetails = [
                 'Contact Person          :    Bantu Kumar Sharma',
                 'Contact Number          :    9584635906',
                 'Residential Address     :    125, Ward no 17, Supela,',
                 '                            Bhilai, Chhattisgarh',
                 'Native Address          :    Sonwan, P.O. Ghosi,',
                 '                            Dist. Jehanabad, Bihar'
-            ].forEach(detail => addText(detail, margin, 9));
+            ];
+
+            contactDetails.forEach(detail => {
+                addText(detail, margin, 9);
+            });
+
             yPos += 5;
+
+            // Photo Gallery Page
             pdf.addPage();
             yPos = 15;
+
             pdf.setTextColor(139, 0, 0);
             addText('PHOTO GALLERY', pageWidth / 2, 12, true);
             pdf.setTextColor(0, 0, 0);
             yPos += 5;
+
             addText('[Photos: 1.jpg, 2.jpg, 3.jpg, 4.jpg]', margin, 9);
             yPos += 5;
             addText('(Please print with the image files in the same directory)', margin, 8);
+
+            // Footer
+            pdf.setTextColor(139, 0, 0);
+            pdf.setFontSize(10);
+            
+
+            // Save
             pdf.save('Aman_Sharma_Marriage_Biodata.pdf');
+        }
+
+        // Scroll animations for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
         };
-    });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInSection 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 </html>
